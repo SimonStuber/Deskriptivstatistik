@@ -1,0 +1,132 @@
+- Class: meta
+  Course: Deskriptivstatistik
+  Lesson: Deskriptivstatistik
+  Author: Simon Stuber
+  Type: Standard
+  Organization: Universitaet Koblenz/Landau
+  Version: 2.4.5
+
+- Class: text
+  Output: Heute beschaeftigen wir uns mit Deskriptivstatistik. Wie immer, muessen wir zuerst unsere Daten einlesen. 
+  
+- Class: cmd_question
+  Output: Fuehren Sie den Befehl "load(dateipfad_rda)" aus um die Daten zu laden.  
+  CorrectAnswer: "load(dateipfad_rda)"
+  AnswerTests: omnitest(correctExpr='load(dateipfad_rda)')
+  Hint: Der Befehl lautet "load(dateipfad_rda)". 
+  
+- Class: text
+  Output: Wir beginnen mit absoluten Haeufigkeiten. Diese geben an, wie oft ein bestimmter Wert in den Daten vorkommt. Den Befehl fuer absolute Haeufigkeiten haben Sie bereits kennen gelernt. Es ist der table() Befehl. Wir werden den table() Befehl verwenden, um uns anzuschauen, wie haeufig verschieden Berufswuensche im Datensatz vorkommen. Dazu schauen wir uns zuerst die Variable "berufswunsch.f" an. 
+
+
+- Class: mult_question
+  Output: Wie koennen Sie sich die Variable "berufswunsch.f" ausgeben lassen?
+  AnswerChoices: daten$berufswunsch.f;daten@berufswunsch;berufswunsch.f$daten
+  CorrectAnswer: daten$berufswunsch.f
+  AnswerTests: omnitest(correctVal= 'daten$berufswunsch.f')
+  Hint: Erst geben Sie die Datensatz an, dann die Variable. 
+
+- Class: cmd_question
+  Output: Lassen Sie sich die Variable "berufswunsch.f" ausgeben.  
+  CorrectAnswer: daten$berufswunsch.f
+  AnswerTests: omnitest(correctExpr='daten$berufswunsch.f')
+  Hint: Der Befehl lautet "daten$berufswunsch.f". 
+  
+
+- Class: cmd_question
+  Output: Lassen Sie sich nun mit der table() Funktion die absoluten Haeufigkeiten fuer diese Variable ausgeben. 
+  CorrectAnswer: table(daten$berufswunsch.f)
+  AnswerTests: omnitest(correctExpr='table(daten$berufswunsch.f)')
+  Hint: Der Befehl lautet "table(daten$berufswunsch.f)"
+
+- Class: text
+  Output: Wie Sie sehen, ist klinische Psychologie am haeufigsten als Berufswunsch vertreten.  
+
+- Class: cmd_question
+  Output: Oft sind wir auch an den relativen Haeufigkeiten interessiert. Also an den prozentualen Anteilen. Diese koennen wir mit der freq() Funktion aus dem "descr" Paket berechnen. Fuehren Sie jetzt den Befehl aus, um das Paket zu laden. 
+  CorrectAnswer: library(descr)
+  AnswerTests: omnitest(correctExpr='library(descr)')
+  Hint: Der Befehl lautet "library(descr)"
+
+- Class: cmd_question
+  Output: Fuehren Sie nun den freq() Befehl fuer die Variable "berufswunsch.f" aus
+  CorrectAnswer: freq(daten$berufswunsch.f)
+  AnswerTests: omnitest(correctExpr='freq(daten$berufswunsch.f)')
+  Hint: Der Befehl lautet "freq(daten$berufswunsch.f)"
+
+- Class: text
+  Output: Nun bekommen Sie sowohl die absoluten als auch die relativen Haeufigkeiten angezeigt.  
+
+- Class: mult_question
+  Output: Was ist der Modalwert der eben berechneten Haeufigkeiten?
+  AnswerChoices: klinische Psychologie;2.8%;47%
+  CorrectAnswer: klinische Psychologie
+  AnswerTests: omnitest(correctVal= 'klinische Psychologie')
+  Hint: Der Modalwert, ist die Auspraegung, die am haeufigsten vorkommt. 
+
+- Class: cmd_question
+  Output: Der Modalwert, kann mit der which.max() Funktion berechnet werden. Wenn die which.max() Funktion um die table() Funktion geschachtelt wird, erhalten wir als Output den Modalwert. Berechnen Sie den Modalwert der Haeufigkeiten der Variable "berufswunsch.f".
+  CorrectAnswer: which.max(table(daten$berufswunsch.f))
+  AnswerTests: omnitest(correctExpr='which.max(table(daten$berufswunsch.f))')
+  Hint: Der Befehl lautet "which.max(table(daten$berufswunsch.f))".
+
+- Class: text
+  Output: Der Modalwert ist also in der Tat klinische Psychologie. 
+
+- Class: text
+  Output: Als naechstes wollen wir fuer eine andere Variable den Medianwert berechnen. Der Medianwert ist der Wert, der eine Verteilung in zwei Haelften teilt. 50% liegen unter diesem Wert und 50% liegen darueber. Wenn die Daten perfekt normalverteilt sind, ist der Medianwert gleich dem Mittelwert. In der echten Welt, sind Daten aber selten perfekt verteilt. Daher macht es oft Sinn, sich diese Werte getrennt ausgeben zu lassen. 
+
+- Class: cmd_question
+  Output: Berechnen Sie nun mit der median() Funktion, den Medianwert fuer die Variable "LEZU". Setzen Sie das na.rm Argument dabei auf TRUE damit der Median trotz fehlender Werte berechnet wird.  
+  CorrectAnswer: median(daten$LEZU, na.rm=TRUE)
+  AnswerTests: omnitest(correctExpr='median(daten$LEZU, na.rm=TRUE)')
+  Hint: Der Befehl lautet "median(daten$LEZU, na.rm=TRUE)"
+
+- Class: text
+  Output: Der Median liegt also bei 5.4. 50% haben also einen Wert unter 5.4 auf der Lebenszufriedenheitsskala, und 50% haben einen Wert ueber 5.4. 
+
+- Class: cmd_question
+  Output: Berechnen Sie nun den Mittelwert fuer diese Variable mit der mean() Funktion. Denken Sie an das na.rm Argument. 
+  CorrectAnswer: mean(daten$LEZU, na.rm=TRUE)
+  AnswerTests: omnitest(correctExpr='mean(daten$LEZU, na.rm=TRUE)')
+  Hint: Der Befehl lautet "mean(daten$LEZU, na.rm=TRUE)"
+  
+- Class: text
+  Output: Natuerlich koennen Sie den Mittelwert auch auf andere Arten berechnen. Die descr() Funktion gibt Ihnen z.B. den Median, den Mittelwert, den Minimal- und Maximalwert, sowie das erste und das dritte Quartil aus. Sie sehen also, dass es in R immer mehrere Wege gibt, zum Ziel zu kommen.
+
+- Class: mult_question
+  Output: Mit welcher Funktion, koennen Sie die Spannweite vom Minimal- bis zum Maximalwert berechnen?
+  AnswerChoices: range();minmax();which.min(which.max())
+  CorrectAnswer: range()
+  AnswerTests: omnitest(correctVal= 'range()')
+  Hint: Der Englische Begriff fuer Spannweite ist range. 
+
+- Class: text
+  Output: Um einen besseren Eindruck davon zu bekommen, wie die Daten um den Mittelwert verteilt sind, koennen wie Streungsmasse berechnen, wie die Varianz und die Standardabweichung. Die Masse geben an, wie weit Datenpunkte durchschnittlich vom Mittelwert entfernt sind. Zieht man die Wurzel aus der Varianz, erhaellt man die Standardabweichung. Die Varianz leasst sich mit der var() Funktion berechnen. Die Standardabweichung mit der sd() Funktion. Denken Sie aber immer daran, das na.rm Argument zu spezifizieren. 
+
+- Class: cmd_question
+  Output: Was ist die Varianz der Variable LEZU? Berechnen Sie diese, geben Sie das Ergebnis, gerundet auf 2 Stellen hinter dem Komma, ein, und fuehren Sie Ihre Eingabe aus.  
+  CorrectAnswer: 1.02
+  AnswerTests: omnitest(correctVal=1.02)
+  Hint: Die Antwort erhalten Sie mit dem Befehl "var(daten$LEZU, na.rm=TRUE)". Geben Sie Ihre Antwort, gerunden auf zwei Dezimalstellen, ein. 
+
+- Class: text
+  Output: Als letztes Wollen wir uns anschauen, wie wir Quartile berechnen koennen. Die erste Funktion die wir verwenden koennen wurde weiter oben bereits genannt, die descr() Funktion. Wenn das Paket descr() geladen ist, laesst sich diese Funktion auch mit der summary() Funktion ausfuehren. 
+
+- Class: cmd_question
+  Output: Fuehren Sie die summary() Funktion fuer die Variable "LEZU" aus. Wo liegt das dritte Quartil?
+  CorrectAnswer: 6
+  AnswerTests: omnitest(correctVal=6)
+  Hint: Geben Sie die Zahl ein. 
+
+- Class: cmd_question
+  Output: Mit der quantile() Funktion, koennen Sie sich mehrere Quartile ausgeben lassen. Tippen Sie quantile(daten$LEZU) um dem Befehl auszufuehren. 
+  CorrectAnswer: quantile(daten$LEZU)
+  AnswerTests: omnitest(correctExpr='quantile(daten$LEZU)')
+  Hint: Der Befehl lautet "quantile(daten$LEZU)". 
+
+- Class: text
+  Output: Die Quartile geben an, wie viel Prozent der Datenpunkte unter einem bestimmte Wert liegen. Das 75% Quartil z.B. gibt an, dass 75% einen Wert zwischen 0 und 6 haben und dass nur 25% Werte ueber 6 haben. 
+
+- Class: text
+  Output: Das war die heutige swirl Lesson. Bis naechste Woche!
